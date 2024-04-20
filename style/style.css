@@ -10,14 +10,30 @@
 }
 
 .social{
-    width: 15%;
+    padding-left: 2vw;
+    width: 100%;
     max-width: 50px;
 }
 
 footer{
     color: gray;    
 }
+.resp-md{
+    margin-right: 50vw;
+}
 
-div, form{
+/*div, form, section, label, input, p{
     border: 1px solid red;
+}*/
+
+@media only screen and (max-width:950px) {
+    .resp-md{
+        margin-left: 50vw;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .social{
+        max-width: 70px;
+    }
 }
