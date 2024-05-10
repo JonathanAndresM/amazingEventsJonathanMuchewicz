@@ -195,7 +195,7 @@ const data = {
     ],
   };
 
-let cardContainer = document.querySelector("section")
+let cardContainer = document.getElementById("card")
 
 card(data.events,cardContainer)
 
