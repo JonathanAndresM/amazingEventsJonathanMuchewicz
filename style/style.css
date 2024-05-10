@@ -28,8 +28,13 @@
 }
 
 .img-card {
-    height: 100%;
+    width: 100%;
+    height: 25vh;
     object-fit: cover;
+}
+
+.shadow-card{
+    box-shadow: inset 0px 0px 20px 1px rgba(0,0,0,1);
 }
 
 table {
@@ -71,6 +76,10 @@ footer {
 
     .text-fs {
         font-size: 2vw;
+    }
+    .img-card-details{
+        height: 100%;
+        object-fit: cover;
     }
 }
 
