@@ -194,105 +194,36 @@ const data = {
     },
   ],
 };
+
 let events = data.events
-let cardContainer = document.getElementById("card")
-let categoryContainer = document.getElementById("category")
+let cardDetails = document.getElementById("cardDetails")
+let idDetails = window.location.href
 
-let pastEvents = []
-for (let i = 0; i < data.events.length; i++) {
-  if (data.currentDate > data.events[i].date) {
-    pastEvents.push(data.events[i])
-  }
-}
+idDetails = new URL(idDetails).searchParams.get("id")
 
-card(pastEvents, cardContainer)
-
-function card(allCard, cardContainer) {
-  cardContainer.innerHTML = ""
-  for (let i = 0; i < allCard.length; i++) {
-    createCard(cardContainer, allCard[i])
-  }
-}
-
-function createCard(cardContainer, card) {
-  let divCard = document.createElement("div");
-  divCard.classList.add("card", "py-3", "mb-2", "ms-2", "shadow-card");
-  divCard.style.width = "15rem";
-
-  divCard.innerHTML = `<img src="${card.image}" class="card-img-top rounded-top img-card" alt = "Metallica in concert" >
-    <div class="card-body h-25">
-        <h5 class="card-title">${card.name}</h5>
-        <p class="card-text">${card.description}</p>
-    </div>
-    <div class="card-body d-flex justify-content-between align-items-center">
-        <h6 class="card-title">Price ${card.price}</h6>
-        <a href="/details.html?id=${card._id}" class="btn btn-outline-danger">Details</a>
+document.addEventListener("DOMContentLoaded",()=>{
+  let tarjeta = events.filter(event => event._id == idDetails)
+  tarjeta.forEach(event => {
+    let divDetails = document.createElement("div");
+      divDetails.classList.add("card", "card-details", "w-100")
+      divDetails.innerHTML = `<div class="row g-0">
+      <div class="col-md-4">
+        <img src="${event.image}" class="img-fluid rounded w-auto img-card-details" alt="${event.name}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body p-2">
+          <h5 class="card-title text-decoration-underline text-center">${event.name}</h5>
+          <p class="card-text">${event.description}</p>
+          <p class="card-text">${event.date < data.currentDate?"This event took place on ":"This event will take place on "}${event.date || event.date}</p>
+          <p class="card-text">Category: ${event.category}</p>
+          <p class="card-text">Place: ${event.place}</p>
+          <p class="card-text">Capacity: ${event.capacity}</p>
+          <p class="card-text">${event.date < data.currentDate?"Assistance: ":"Estimate: "}${event.assistance || event.estimate}</p>
+          <p class="card-text"><small class="text-body-secondary">Price: ${event.price}</small></p>
+        </div>
+      </div>
     </div>`
-
-  cardContainer.appendChild(divCard)
-}
-
-let categorys = [... new Set(data.events.map(event => event.category))]
-
-function createCheck(array, container) {
-  array.forEach((e) => {
-    let divCategory = document.createElement("div");
-    divCategory.classList.add("container-fluid", "d-flex", "row", "col-12", "col-md-10", "col-lg-7", "justify-content-center", "w-auto", "m-1")
-    divCategory.innerHTML = `<div class="form-check col-3 col-md-1 mx-1 py-1 w-auto">
-    <input class="form-check-input my-1 shadow" type="checkbox" value="${e}" id="${e.replace(/\s/g, "").toLowerCase()}">
-    <label class="form-check-label fw-bolder" for="${e.replace(/\s/g, "").toLowerCase()}">
-    ${e}
-    </label>
-    </div>`
-    container.appendChild(divCategory)
-  })
-}
-createCheck(categorys, categoryContainer)
-
-let checkbox = document.getElementById("category")
-let search = document.getElementById("search")
-
-checkbox.addEventListener("change", (event) => {
-  filterEvents()
+      cardDetails.appendChild(divDetails)
+  });
 })
-
-search.addEventListener("input", (e) => {
-  filterEvents()
-})
-
-function filterEvents() {
-  let checkboxCheck = document.querySelectorAll("input[type=checkbox]:checked")
-  let searchFilter = pastEvents.filter(event => event.name.toLowerCase().includes(search.value.toLowerCase()) || event.description.toLowerCase().includes(search.value.toLowerCase()))
-
-  if (checkboxCheck.length > 0) {
-    let checkboxfilter = searchFilter.filter(events => {
-      for (let i = 0; i < checkboxCheck.length; i++) {
-        if (checkboxCheck[i].value == events.category) {
-          return events
-        }
-      }
-    })
-    if (checkboxfilter.length > 0) {
-      card(checkboxfilter, cardContainer)
-    } else {
-      searchError(cardContainer)
-    }
-  } else {
-    if (searchFilter.length > 0) {
-      card(searchFilter, cardContainer)
-    } else {
-      searchError(cardContainer)
-    }
-  }
-}
-
-function searchError(container) {
-  let message = document.createElement("div")
-  message.innerHTML = `<div class="alert alert-danger" role="alert">
-  No results found.
-</div>`
-
-  container.innerHTML = ""
-
-  container.appendChild(message)
-}
+ 
