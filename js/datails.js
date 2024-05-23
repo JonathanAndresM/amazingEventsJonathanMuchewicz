@@ -205,21 +205,21 @@ document.addEventListener("DOMContentLoaded",()=>{
   let tarjeta = events.filter(event => event._id == idDetails)
   tarjeta.forEach(event => {
     let divDetails = document.createElement("div");
-      divDetails.classList.add("card", "card-details", "w-100")
-      divDetails.innerHTML = `<div class="row g-0">
+      divDetails.classList.add("card", "w-100", "rounded-4")
+      divDetails.innerHTML = `<div class="row g-0 p-3 rounded-4 shadow-card-details">
       <div class="col-md-4">
-        <img src="${event.image}" class="img-fluid rounded w-auto img-card-details" alt="${event.name}">
+        <img src="${event.image}" class="img-fluid rounded-4 w-auto img-card-details" alt="${event.name}">
       </div>
       <div class="col-md-8">
         <div class="card-body p-2">
-          <h5 class="card-title text-decoration-underline text-center">${event.name}</h5>
-          <p class="card-text">${event.description}</p>
-          <p class="card-text">${event.date < data.currentDate?"This event took place on ":"This event will take place on "}${event.date || event.date}</p>
-          <p class="card-text">Category: ${event.category}</p>
-          <p class="card-text">Place: ${event.place}</p>
-          <p class="card-text">Capacity: ${event.capacity}</p>
-          <p class="card-text">${event.date < data.currentDate?"Assistance: ":"Estimate: "}${event.assistance || event.estimate}</p>
-          <p class="card-text"><small class="text-body-secondary">Price: ${event.price}</small></p>
+          <h5 class="card-title h1 text-decoration-underline text-center">${event.name}</h5>
+          <p class="card-text text-center h5">${event.description}</p>
+          <p class="card-text text-center h5">${event.date < data.currentDate?"This event took place on ":"This event will take place on "}${event.date || event.date}</p>
+          <p class="card-text h5">Category: ${event.category}</p>
+          <p class="card-text h5">Place: ${event.place}</p>
+          <p class="card-text h5">Capacity: ${event.capacity}</p>
+          <p class="card-text h5">${event.date < data.currentDate?"Assistance: ":"Estimate: "}${event.assistance || event.estimate}</p>
+          <p class="card-text h5"><small class="text-body-secondary">Price: ${event.price}</small></p>
         </div>
       </div>
     </div>`

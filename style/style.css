@@ -37,6 +37,10 @@
     box-shadow: inset 0px 0px 20px 1px rgba(0,0,0,1);
 }
 
+.shadow-card-details{
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,1);
+}
+
 table {
     font-size: 3.5vw;
 }
@@ -58,10 +62,6 @@ table {
 footer {
     color: gray;
 }
-
-/*div, form, section, label, input, p{
-    border: 1px solid red;
-}*/
 
 @media only screen and (min-width:768px) {
 
