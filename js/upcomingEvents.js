@@ -1,3 +1,4 @@
+import * as functionGlobal from "./scriptGlobal.js"
 const data = {
   currentDate: "2023-01-01",
   events: [
@@ -210,11 +211,11 @@ card(upcomingEvents, cardContainer)
 function card(allCard, cardContainer) {
   cardContainer.innerHTML = ""
   for (let i = 0; i < allCard.length; i++) {
-    createCard(cardContainer, allCard[i])
+    functionGlobal.createCard(cardContainer, allCard[i])
   }
 }
 
-function createCard(cardContainer, card) {
+/*function createCard(cardContainer, card) {
   let divCard = document.createElement("div");
   divCard.classList.add("card", "py-3", "mb-2", "ms-2", "shadow-card");
   divCard.style.width = "15rem";
@@ -230,12 +231,12 @@ function createCard(cardContainer, card) {
     </div>`
 
   cardContainer.appendChild(divCard)
-}
+}*/
 
 
 let categorys = [... new Set(data.events.map(evento => evento.category))]
 
-function createCheck(array, container) {
+/*function createCheck(array, container) {
   array.forEach((e) => {
     let divCategory = document.createElement("div");
     divCategory.classList.add("container-fluid", "d-flex", "row", "col-12", "col-md-10", "col-lg-7", "justify-content-center", "w-auto", "m-1")
@@ -247,8 +248,8 @@ function createCheck(array, container) {
     </div>`
     container.appendChild(divCategory)
   })
-}
-createCheck(categorys, categoryContainer)
+}*/
+functionGlobal.createCheck(categorys, categoryContainer)
 
 let checkbox = document.getElementById("category")
 let search = document.getElementById("search")
@@ -276,18 +277,18 @@ function filterEvents() {
     if (checkboxfilter.length > 0) {
       card(checkboxfilter, cardContainer)
     } else {
-      searchError(cardContainer)
+      functionGlobal.searchError(cardContainer)
     }
   } else {
     if (searchFilter.length > 0) {
       card(searchFilter, cardContainer)
     } else {
-      searchError(cardContainer)
+      functionGlobal.searchError(cardContainer)
     }
   }
 }
 
-function searchError(container) {
+/*function searchError(container) {
   let message = document.createElement("div")
   message.innerHTML = `<div class="alert alert-danger" role="alert">
   No results found.
@@ -296,4 +297,4 @@ function searchError(container) {
   container.innerHTML = ""
 
   container.appendChild(message)
-}
+}*/
