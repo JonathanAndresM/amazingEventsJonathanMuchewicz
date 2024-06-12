@@ -64,35 +64,33 @@ function tableUpcomingCategory(upcomingEvents) {
         
     </tr>
 `;
-    let categoryStats = {};
+    let categoryStatistics = {};
 
     upcomingEvents.forEach(event => {
         let revenue = event.price * event.estimate;
 
-        if (!categoryStats[event.category]) {
-            categoryStats[event.category] = {
+        if (!categoryStatistics[event.category]) {
+            categoryStatistics[event.category] = {
                 totalRevenue: 0,
                 totalEstimate: 0,
                 totalCapacity: 0,
-                totalAssistance: 0
             };
         }
 
-        categoryStats[event.category].totalRevenue += revenue;
-        categoryStats[event.category].totalEstimate += event.estimate;
-        categoryStats[event.category].totalCapacity += event.capacity;
-        categoryStats[event.category].totalAssistance += event.assistance;
+        categoryStatistics[event.category].totalRevenue += revenue;
+        categoryStatistics[event.category].totalEstimate += event.estimate;
+        categoryStatistics[event.category].totalCapacity += event.capacity;
     });
 
-    for (let category in categoryStats) {
-        let categoryData = categoryStats[category];
+    for (let category in categoryStatistics) {
+        let categoryData = categoryStatistics[category];
         let revenue = categoryData.totalRevenue;
         let percentage = (categoryData.totalEstimate / categoryData.totalCapacity) * 100;
 
         let result = document.createElement("tr");
         result.innerHTML = `
             <td class="border">${category}</td>
-            <td class="border">${new Intl.NumberFormat().format(revenue)}</td>
+            <td class="border">$ ${new Intl.NumberFormat().format(revenue)}</td>
             <td class="border">${percentage.toFixed(0)}%</td>
         `;
         tbodyUpcoming.appendChild(result);
@@ -118,35 +116,33 @@ function tablePastCategory(pastEvents) {
         
     </tr>
 `;
-    let categoryStats = {};
+    let categoryStatistics = {};
 
     pastEvents.forEach(event => {
         let revenue = event.price * event.assistance;
 
-        if (!categoryStats[event.category]) {
-            categoryStats[event.category] = {
+        if (!categoryStatistics[event.category]) {
+            categoryStatistics[event.category] = {
                 totalRevenue: 0,
-                totalEstimate: 0,
                 totalCapacity: 0,
                 totalAssistance: 0
             };
         }
 
-        categoryStats[event.category].totalRevenue += revenue;
-        categoryStats[event.category].totalEstimate += event.estimate;
-        categoryStats[event.category].totalCapacity += event.capacity;
-        categoryStats[event.category].totalAssistance += event.assistance;
+        categoryStatistics[event.category].totalRevenue += revenue;
+        categoryStatistics[event.category].totalCapacity += event.capacity;
+        categoryStatistics[event.category].totalAssistance += event.assistance;
     });
 
-    for (let category in categoryStats) {
-        let categoryData = categoryStats[category];
+    for (let category in categoryStatistics) {
+        let categoryData = categoryStatistics[category];
         let revenue = categoryData.totalRevenue;
         let percentage = (categoryData.totalAssistance / categoryData.totalCapacity) * 100;
 
         let result = document.createElement("tr");
         result.innerHTML = `
             <td class="border">${category}</td>
-            <td class="border">${new Intl.NumberFormat().format(revenue)}</td>
+            <td class="border">$ ${new Intl.NumberFormat().format(revenue)}</td>
             <td class="border">${percentage.toFixed(0)}%</td>
         `;
         tbodyPast.appendChild(result);
