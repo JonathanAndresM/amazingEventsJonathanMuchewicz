@@ -24,74 +24,20 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
           <div class="navbar-nav text-align-center text-wrap">
-            <a class="nav-link text-center" aria-current="page" href="/home.html">Home</a>
-            <a class="nav-link text-center" href="/upcomingEvents.html">Upcoming Events</a>
-            <a class="nav-link text-center" href="/pastEvents.html">Past Events</a>
-            <a class="nav-link text-center" href="/contact.html">Contact</a>
-            <a class="nav-link text-center" href="#">Stats</a>
+            <a class="text-center btn btn-outline-light m-1" aria-current="page" href="/home.html">Home</a>
+            <a class="text-center btn btn-outline-light m-1" href="/upcomingEvents.html">Upcoming Events</a>
+            <a class="text-center btn btn-outline-light m-1" href="/pastEvents.html">Past Events</a>
+            <a class="text-center btn btn-outline-light m-1" href="#">Stats</a>
+            <a class="text-center btn btn-outline-light m-1" href="/contact.html">Contact</a>
           </div>
         </div>
       </div>
     </nav>
   </header>
-  <main class="bg-dark-subtle h-100 d-flex justify-content-center align-items-center">
-    <div class="main-stats d-flex justify-content-center align-items-center row">
-      <table class="table w-100">
-          <tr>
-            <th colspan="3" scope="row" class="text-light bg-dark">Events Statistics</th>
-          </tr>
-        <tbody class="text-center border-dark">
-          <tr>
-            <td class="bg-dark-subtle">Events with highest % of assistance</td>
-            <td class="bg-dark-subtle">Events with lowest % of assistance</td>
-            <td class="bg-dark-subtle">Events with larger capacity</td>
-          </tr>
-          <tr>
-            <td class="border">00</td>
-            <td class="border">00</td>
-            <td class="border">00</td>
-          </tr>
-        </tbody>
-          <tr>
-            <th colspan="3" scope="row" class="text-light bg-dark">Upcoming events statistics by category</th>
-          </tr>
-        <tbody class="text-center border-dark">
-          <tr>
-            <td class="bg-dark-subtle">Categories</td>
-            <td class="bg-dark-subtle">Revenues</td>
-            <td class="bg-dark-subtle">Porcentage of assistance</td>
-          </tr>
-          <tr>
-            <td class="border">00</td>
-            <td class="border">00</td>
-            <td class="border">00</td>
-          </tr>
-          <tr>
-            <td class="border">00</td>
-            <td class="border">00</td>
-            <td class="border">00</td>
-          </tr>
-        </tbody>
-          <tr>
-            <th colspan="3" scope="row" class="text-light bg-dark">Past events statistics by category</th>
-          </tr>
-        <tbody class="text-center border-dark">
-          <tr>
-            <td class="bg-dark-subtle">Categories</td>
-            <td class="bg-dark-subtle">Revenues</td>
-            <td class="bg-dark-subtle">Porcentage of assistance</td>
-          </tr>
-          <tr>
-            <td class="border">00</td>
-            <td class="border">00</td>
-            <td class="border">00</td>
-          </tr>
-          <tr>
-            <td class="border">00</td>
-            <td class="border">00</td>
-            <td class="border">00</td>
-          </tr>
-        </tbody>
+  <main class="bg-dark-subtle d-flex justify-content-center align-items-center py-3">
+    <div class="main-stats d-flex justify-content-center align-items-center row h-100">
+      <table id="table" class="table w-100">
+          
       </table>
     </div>
   </main>
@@ -113,7 +59,7 @@
       </div>
     </div>
   </footer>
-
+  <script src="/js/stats.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
